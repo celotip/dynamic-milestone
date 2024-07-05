@@ -10,7 +10,7 @@
         .grid-demo{
             width: 65%;
             text-align: center;
-            margin-top: 170px;
+            margin-top: 30px;
         }
 
 
@@ -37,8 +37,11 @@
                     <div class="form-group">
                         <input type="email" class="form-control" placeholder="Email address" id="email" name="email" required>
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="form-group">
                         <input type="password" class="form-control" placeholder="Password" id="pw" name="pw" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="password" class="form-control" placeholder="Confirm Password" id="confirm_pw" required>
                     </div>
                     <button type="submit" class="btn btn-primary" name="submit">Register</button>
                 </form><br><br>
@@ -49,6 +52,22 @@
     </div>
   </div>
   <p class="mt-5">Pesan php:</p>
+
+  <script>
+    let password = document.getElementById("pw");
+    let confirm_password = document.getElementById("confirm_pw");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords don't match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+  </script>
 
     <?php
     include "koneksi.php";
